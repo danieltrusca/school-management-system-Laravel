@@ -32,7 +32,15 @@
 							<p class="text-white-50">Sign in to start your session</p>
 						</div>
 						<div class="p-30 rounded30 box-shadowed b-2 b-dashed">
-
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
 							<form action="{{ route('login') }}" method="post">
                                 @csrf
 								<div class="form-group">

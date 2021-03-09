@@ -32,7 +32,15 @@
 							<p class="text-white-50">Register a new membership</p>
 						</div>
 						<div class="p-30 rounded30 box-shadowed b-2 b-dashed">
-
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
 							<form action="{{ route('register') }}" method="post">
                                 @csrf
 								<div class="form-group">
