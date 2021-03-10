@@ -21,7 +21,7 @@
                <div class="box-body">
                  <div class="row">
                    <div class="col">
-                       <form novalidate>
+                       <form method="POST" action="{{ route('user.store')}}">
                            @csrf
                          <div class="row">
                             <div class="col-12">

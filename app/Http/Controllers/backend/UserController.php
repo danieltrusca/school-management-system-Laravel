@@ -18,4 +18,22 @@ class UserController extends Controller
     {
         return view('backend.users.add_users');
     }
+
+    public function userStore(Request $request)
+    {
+        $validatedData=$request->validate([
+            'email'=>'required|unique:users',
+            'name'=>'required|max:100'
+        ]);
+
+        $newUser=new User();
+        $newUser->usertype=$request->usertype;
+        $newUser->name=$request->name;
+        $newUser->email=$request->email;
+        $newUser->password=bcrypt($request->password);
+
+        $newUser->save();
+
+        return redirect()->route('user.view');
+    }
 }
