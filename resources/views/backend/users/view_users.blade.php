@@ -24,33 +24,37 @@
                     <table id="example1" class="table table-bordered table-striped">
                       <thead>
                           <tr>
+                              <th>SN</th>
+                              <th>Role</th>
                               <th>Name</th>
-                              <th>Position</th>
-                              <th>Office</th>
-                              <th>Age</th>
-                              <th>Start date</th>
-                              <th>Salary</th>
+                              <th>Email</th>
+                              <th>Action</th>
+
                           </tr>
                       </thead>
 
                         <tbody>
+                            @foreach($users as $key=>$user)
                             <tr>
-                                  <td>Tiger Nixon</td>
-                                  <td>System Architect</td>
-                                  <td>Edinburgh</td>
-                                  <td>61</td>
-                                  <td>2011/04/25</td>
-                                  <td>$320,800</td>
+                                  <td>{{ $key+1 }}</td>
+                                  <td>{{ $user->usertype}}</td>
+                                  <td>{{ $user->name}}</td>
+                                  <td>{{ $user->email}}</td>
+                                  <td>
+                                      <a href="" class="btn btn-info btn-rounded">Edit</a>
+                                      <a href="" class="btn btn-danger btn-rounded">Delete</a>
+                                  </td>
+
                               </tr>
+                              @endforeach
                         </tbody>
                       <tfoot>
                           <tr>
-                              <th>Name</th>
-                              <th>Position</th>
-                              <th>Office</th>
-                              <th>Age</th>
-                              <th>Start date</th>
-                              <th>Salary</th>
+                            <th>SN</th>
+                            <th>Role</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Action</th>
                           </tr>
                       </tfoot>
                     </table>
