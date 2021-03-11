@@ -7,8 +7,11 @@
 				 <a href="index.html">
 				  <!-- logo for regular state and mobile devices -->
 					 <div class="d-flex align-items-center justify-content-center">
-						  <img src="{{ asset('backend/images/logo-dark.png')}}" alt="">
-						  <h3><b>Dan Trusca</b> Admin</h3>
+                         <a href="{{ route('dashboard')}}" class="d-flex align-items-center justify-content-center">
+                            <img src="{{ asset('backend/images/logo-dark.png')}}" alt="">
+                            <h3><b>Dan Trusca</b> Admin</h3>
+                         </a>
+
 					 </div>
 				</a>
 			</div>

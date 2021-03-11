@@ -42,7 +42,7 @@
                                   <td>{{ $user->email}}</td>
                                   <td>
                                       <a href="{{ route('user.edit', $user->id)}}" class="btn btn-info btn-rounded">Edit</a>
-                                      <a href="{{ route('user.delete', $user->id)}}" class="btn btn-danger btn-rounded">Delete</a>
+                                      <a href="{{ route('user.delete', $user->id)}}" class="btn btn-danger btn-rounded" id="delete">Delete</a>
                                   </td>
 
                               </tr>
