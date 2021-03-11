@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\backend\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,14 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
+
+
+
+Route::prefix('users')->group(function () {
+    Route::get('/view', [UserController::class, 'userView'])->name('user.view');
+    Route::get('/add', [UserController::class, 'userAdd'])->name('user.add');
+    Route::post('/store', [UserController::class, 'userStore'])->name('user.store');
+    Route::get('/edit/{userId}', [UserController::class, 'userEdit'])->name('user.edit');
+    Route::post('/update/{userId}', [UserController::class, 'userUpdate'])->name('user.update');
+    Route::get('/delete/{userId}', [UserController::class, 'userDelete'])->name('user.delete');
+});
