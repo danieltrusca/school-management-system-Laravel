@@ -41,4 +41,67 @@ class UserController extends Controller
 
         return redirect()->route('user.view')->with($notification);
     }
+
+    public function userEdit($userId)
+    {
+        $userToEdit=User::find($userId);
+        return view('backend.users.edit_users', compact('userToEdit'));
+    }
+
+    public function userUpdate(Request $request, $userId)
+    {
+        $userToEdit=User::find($userId);
+
+        if($userToEdit){
+            // $validatedData=$request->validate([
+            //     'email'=>'required|unique:users',
+            //     'name'=>'required|max:100'
+            // ]);
+
+            $userToEdit->usertype=$request->usertype;
+            $userToEdit->name=$request->name;
+            $userToEdit->email=$request->email;
+
+            $userToEdit->save();
+
+            $notification = array(
+                'message' => 'User Updated Successfully',
+                'alert-type' => 'info'
+            );
+
+            return redirect()->route('user.view')->with($notification);
+        } else {
+            $notification = array(
+                'message' => 'User Not Found',
+                'alert-type' => 'warning'
+            );
+
+            return redirect()->route('user.view')->with($notification);
+        }
+
+
+    }
+
+    public function userDelete($userId)
+    {
+        $userToDelete=User::find($userId);
+
+        if($userToDelete)
+        {
+            $userToDelete->delete();
+            $notification = array(
+                'message' => 'User Deleted Successfully',
+                'alert-type' => 'info'
+            );
+
+            return redirect()->route('user.view')->with($notification);
+        } else {
+            $notification = array(
+                'message' => 'User Not Found',
+                'alert-type' => 'warning'
+            );
+
+            return redirect()->route('user.view')->with($notification);
+        }
+    }
 }
