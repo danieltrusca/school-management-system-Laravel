@@ -42,6 +42,20 @@
         </li>
 
         <li class="treeview">
+            <a href="#">
+              <i data-feather="grid"></i> <span>Manage Profile</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-right pull-right"></i>
+              </span>
+            </a>
+
+            <ul class="treeview-menu">
+                <li><a href="{{ route('profile.view') }}"><i class="ti-more"></i>Your Profile</a></li>
+                <li><a href=""><i class="ti-more"></i>Change Password</a></li>
+            </ul>
+          </li>
+
+        <li class="treeview">
           <a href="#">
             <i data-feather="mail"></i> <span>Mailbox</span>
             <span class="pull-right-container">

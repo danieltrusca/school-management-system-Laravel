@@ -3,17 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\backend\UserController;
+use App\Http\Controllers\backend\ProfileController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
 
 Route::get('/', function () {
     return view('auth.login');
@@ -26,7 +18,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
 
 
-
+ // User Management All Routes
 Route::prefix('users')->group(function () {
     Route::get('/view', [UserController::class, 'userView'])->name('user.view');
     Route::get('/add', [UserController::class, 'userAdd'])->name('user.add');
@@ -35,3 +27,14 @@ Route::prefix('users')->group(function () {
     Route::post('/update/{userId}', [UserController::class, 'userUpdate'])->name('user.update');
     Route::get('/delete/{userId}', [UserController::class, 'userDelete'])->name('user.delete');
 });
+
+
+/// User Profile and Change Password
+Route::prefix('profile')->group(function(){
+
+    Route::get('/view', [ProfileController::class, 'ProfileView'])->name('profile.view');
+
+    Route::get('/edit', [ProfileController::class, 'ProfileEdit'])->name('profile.edit');
+    Route::post('/store', [ProfileController::class, 'ProfileStore'])->name('profile.store');
+
+    });
