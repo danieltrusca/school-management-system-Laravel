@@ -34,6 +34,11 @@ class UserController extends Controller
 
         $newUser->save();
 
-        return redirect()->route('user.view');
+        $notification = array(
+    		'message' => 'User Inserted Successfully',
+    		'alert-type' => 'success'
+    	);
+
+        return redirect()->route('user.view')->with($notification);
     }
 }
